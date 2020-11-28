@@ -1,4 +1,7 @@
-var myLatLng = { lat: 39.0578771, lng: 34.4999527 };
+var myLatLng = {
+    lat: 39.0578771,
+    lng: 34.4999527
+};
 var mapOptions = {
     center: myLatLng,
     zoom: 6.2,
@@ -45,7 +48,9 @@ function calcRoute() {
             directionsDisplay.setDirections(result);
         } else {
             //delete route from map
-            directionsDisplay.setDirections({ routes: [] });
+            directionsDisplay.setDirections({
+                routes: []
+            });
             //center map in London
             map.setCenter(myLatLng);
 
@@ -64,7 +69,9 @@ function clearRoute() {
     document.getElementById("output").style.display = "none";
     document.getElementById("location-1").value = "";
     document.getElementById("location-2").value = "";
-    directionsDisplay.setDirections({ routes: [] });
+    directionsDisplay.setDirections({
+        routes: []
+    });
 
 }
 
@@ -106,7 +113,10 @@ function showKazalar() {
         kaza = kaza.split('|');
         console.log(kaza);
         kazaPoint.push(new google.maps.Marker({
-            position: { 'lat': parseFloat(kaza[1]), 'lng': parseFloat(kaza[3]) },
+            position: {
+                'lat': parseFloat(kaza[1]),
+                'lng': parseFloat(kaza[3])
+            },
             map: map,
         }))
     });

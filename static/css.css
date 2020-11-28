@@ -1,13 +1,25 @@
-* {
-    margin: auto;
-    box-sizing: border-box;
+
+/* Clearfix */
+.row{
+    position: relative;
 }
 
-html {
-    font-size: 62.5%;
+.btn1{
+    margin-left: 20px;
 }
 
-body{
+.btn2{
+    position: absolute;
+    right: 20px;
+}
+
+
+.container .main{
+    width: 65vw;
+    border-radius: 1rem;
+    background-color: #fff;
+    padding: 2rem;
+
     height: 96vh;
     background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     background-size: cover;
@@ -16,35 +28,9 @@ body{
     font-weight: 400;
     line-height: 1.7;
     color: #000;
-}
-
-/* Clearfix */
-.row::after{
-    content: "";
-    display: table;
-    clear:both;
-}
-
-.header{
-    display: block;
-    font-size: 1.2rem;
-    font-weight: 400;
-    padding: 1rem;
-    margin: 2rem auto;
-}
-
-.header h1{
-    color: #19244e;
-    text-align: center;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.container{
-    width: 65vw;
-    border-radius: 1rem;
-    background-color: #fff;
-    padding: 2rem;
+    box-sizing: border-box;
+    margin: auto;
+    padding-top: 10px;
 }
 
 .location-label{
@@ -93,7 +79,7 @@ body{
 }
 
 .button:hover{    
-    background-image: linear-gradient(-225deg, #A445B2 0%, #D41872 52%, #FF0066 100%);
+    background-image: linear-gradient(-225deg, #298359 0%, #219078 52%, #1ea040 100%);
     transform: scale(1.015);
     transition: ease-in .1s;
 }

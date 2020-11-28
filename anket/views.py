@@ -7,6 +7,9 @@ from anket.models import Anket
 
 def index(request):
     return render(request,"index.html")
+def hakkında(request):
+    return render(request,"hakkında.html")
+
 
 def navigasyon(request):
     result = Anket.objects.all()
@@ -14,3 +17,6 @@ def navigasyon(request):
     for res in result:
         kazalar.append('|'+str(res.enlem)+'|'+' '+'|'+str(res.boylam)+'|')
     return render(request,"navigasyon.html", {"kazalar": kazalar})
+
+def deneme(request):
+    return render(request,"layout.html", {})    

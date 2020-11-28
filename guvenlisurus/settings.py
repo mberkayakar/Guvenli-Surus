@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'z6mnh@4j$(y3u2(*td@a9=b_j(12jd-7&(0-r901oule+4jde!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False  
+DEBUG = True  
 
 ALLOWED_HOSTS = ['127.0.0.1', 'guvenli-surus.herokuapp.com']
 
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'anket',
+    'user',
 ]
 
 MIDDLEWARE = [

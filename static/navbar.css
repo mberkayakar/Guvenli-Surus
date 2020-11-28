@@ -1,0 +1,196 @@
+﻿body {
+  margin-top: 80px;
+}
+
+a {
+  text-decoration: none
+}
+
+.vertical-menu {
+  width: 50%;
+  margin-top: 15px;
+  list-style-type: none;
+  padding-left: 0;
+}
+
+ 
+
+
+.vertical-menu #home {
+  border-top-left-radius: 10px;
+
+}
+
+.vertical-menu #son {
+  border-bottom-left-radius: 10px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+#home {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+.wp {
+  width: 100%;
+  height: 600px;
+}
+
+
+#medialar {
+  position: fixed;
+  top: 0px;
+  z-index: 1
+}
+
+#slidenav {
+  position: fixed;
+  right: 0px;
+  z-index: 1;
+  display: none;
+}
+
+#b1 {
+
+  position: fixed;
+  top: 10px;
+  margin-right: 10px;
+
+  z-index: 1;
+  display: inline-block;
+  right: 0px !important
+}
+
+
+@media screen and (max-width: 599px) {
+  body {
+    margin-top: 0;
+  }
+
+  #b1 {
+    display: inline-block;
+  }
+
+
+  #demo2 {
+    height: 100px
+  }
+
+  ul {
+    display: none
+  }
+
+  #img222 {
+    width: 100%
+  }
+
+
+
+  p {
+    display: none
+  }
+
+  h1 {
+    display: none
+  }
+
+  h3 {
+    display: none
+  }
+
+  #demo2 h3 {
+    display: block;
+  }
+
+  #medialar {
+    display: none;
+  }
+
+}
+
+/*Burası Ortanca Ekran*/
+
+@media screen and (min-width: 600) {
+
+  #slidenav {
+    display: none !important;
+  }
+
+  #b1 {
+    display: none !important;
+  }
+
+  #demo2 {
+    margin-top: 0px
+  }
+
+  ul {
+    display: none
+  }
+
+  #img222 {
+    width: 100%
+  }
+
+  #ikincisi {
+    margin-top: 100px
+  }
+
+
+
+  mg {
+    width: 100%
+  }
+
+  p {
+    display: none
+  }
+
+  h1 {
+    display: none
+  }
+
+  h3 {
+    display: none
+  }
+
+
+  #medialar {
+    display: none;
+
+  }
+
+}
+
+
+
+
+/*buradan aşşagısı büyük ekran*/
+@media screen and (min-width: 700px) {
+
+  .btn-warning {
+    display: none
+  }
+
+  #slidenav {
+    display: none !important;
+  }
+
+  #b1 {
+    display: none;
+  }
+
+}
