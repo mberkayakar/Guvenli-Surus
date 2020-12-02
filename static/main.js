@@ -42,7 +42,7 @@ function calcRoute() {
 
             //Get distance and time            
 
-            $("#output").html("<div class='result-table'> Driving distance: " + result.routes[0].legs[0].distance.text + ".<br />Duration: " + result.routes[0].legs[0].duration.text + ".</div>");
+            $("#output").html("<div class='result-table'> Sürüş Mesafesi: " + result.routes[0].legs[0].distance.text + ".<br />Duration: " + result.routes[0].legs[0].duration.text + ".</div>");
             document.getElementById("output").style.display = "block";
             //display route
             directionsDisplay.setDirections(result);
@@ -56,7 +56,7 @@ function calcRoute() {
 
             //Show error message           
 
-            alert("Can't find road! Please try again!");
+            alert("Rota oluşturulamadı lütfen daha sonra tekrar deneyin");
             clearRoute();
         }
     });
@@ -106,12 +106,10 @@ function showPos(position) {
 }
 
 function showKazalar() {
-    //var kazalar = document.getElementById("kazalar").value;
     var kazaPoint = []
-    console.log(kazalar);
+
     kazalar.forEach(kaza => {
         kaza = kaza.split('|');
-        console.log(kaza);
         kazaPoint.push(new google.maps.Marker({
             position: {
                 'lat': parseFloat(kaza[1]),

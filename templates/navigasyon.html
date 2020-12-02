@@ -5,18 +5,10 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css.css'%} ">
 <script>
-    const titles = ['Gidilecek İstikamet', '#HayatEveSigar...'];
-    var i = 0;
-    setInterval(() => {
-        document.title = titles[i];
-        if (i == 1) i = 0;
-        else i = 1;
-    }, 2000);
-
     var kazalar = "{{kazalar|escapejs}}".split(',');
 </script>
 
-
+<!-- bundan yukarısı silinecek galiba -->
 <div class="container main">
     <h1 style="text-align: center;">Gidmek istediğiniz yerden nereye gideceginizi</h1>
     <form>

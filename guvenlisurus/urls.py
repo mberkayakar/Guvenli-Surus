@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
-from anket.views import index,navigasyon,hakkında,deneme
-
+from anket.views import navigasyon
+from guvenlisurus.views import index,hakkında
+    
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name="index"),
     path('navigasyon/',navigasyon),
     path('hakkında/',hakkında),
     path('user/',include("user.urls")),
-    path('layout/',deneme),
+    path ('anket/',include("anket.urls")),
+   
 ]   

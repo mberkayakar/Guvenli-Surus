@@ -1,12 +1,12 @@
 from django.db import models
-from django.utils.timezone import now
+from django.utils.timezone import now # 
 import datetime
 
 # Create your models here.
 
 
-class Anket(models.Model):
-    author = models.ForeignKey("auth.user",on_delete=models.CASCADE,verbose_name="Kayıdı oluşturan")
+class Anket(models.Model):    #anket tablom
+    author = models.ForeignKey("auth.user",on_delete=models.CASCADE,verbose_name="Kayıdı oluşturan")   # kimin yazacagını userdaki foreing ile  tutacaz 
     enlem  = models.FloatField( )
     boylam = models.FloatField()
     sorun  = models.CharField(max_length=50)  #kazamı yoksa kaza riskimi var

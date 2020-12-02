@@ -2,18 +2,20 @@
 
 body {
   position: relative;
+ 
 }
 .site-footer
-{
+{ position: absolute;
   background-color:#26272b;
   padding:45px 0 20px;
   font-size:15px;
   line-height:24px;
   color:#737373;
-  position: absolute;
-   
+
+  
   width: 100%;
-  margin-top: 5px;
+  margin-top: 0;
+   
 }
 .site-footer hr
 {

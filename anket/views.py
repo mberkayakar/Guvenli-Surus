@@ -1,14 +1,9 @@
 from django.shortcuts import render
-
 from django.contrib.auth.models import User
 from anket.models import Anket
 
-# Create your views here.
 
-def index(request):
-    return render(request,"index.html")
-def hakkında(request):
-    return render(request,"hakkında.html")
+# Create your views here.
 
 
 def navigasyon(request):
@@ -18,5 +13,5 @@ def navigasyon(request):
         kazalar.append('|'+str(res.enlem)+'|'+' '+'|'+str(res.boylam)+'|')
     return render(request,"navigasyon.html", {"kazalar": kazalar})
 
-def deneme(request):
-    return render(request,"layout.html", {})    
+def anketekle(request):
+    return render (request,"anket_ekle.html")
