@@ -37,18 +37,35 @@
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item ml-auto p-1 bg-success"><a class="nav-link text-light"
                             href="/hakkında">Hakkımızda</a></li>
-                    <li class="nav-item ml-auto p-1"><a class="nav-link text-light"
-                            href="/navigasyon">Navigasyon</a></li>
+                    <li class="nav-item ml-auto p-1"><a class="nav-link text-light" href="/navigasyon">Navigasyon</a>
+                    </li>
                     <li class="nav-item ml-auto p-1"><a class="nav-link text-light" href="iletisim.html">İletişim</a>
                     </li>
                     <li class="nav-item ml-auto p-1"><a class="nav-link text-light" href="Guvenlik.html">Güvenlik</a>
                     </li>
                     <li class="nav-item ml-auto p-1"><a class="nav-link text-light" href="whatsappWeb.html">Whatsapp</a>
                     </li>
+
+
+                    {% if request.user.is_authenticated %}
+
+                    <li class="nav-item ml-auto p-1" style="color: red;"><a class="nav-link text-light"
+                            href="/user/logout">Çıkış yap</a></li>
+
+                    {% else %}
+
+                    <li class="nav-item ml-auto p-1"><a class="nav-link text-light" href="/user/giris">Giriş Yap</a>
+                    </li>
+                    {% endif %}
+
                 </ul>
+              
             </div>
         </div>
-
+        {% if request.user.is_authenticated %}
+        <p class="nav-item ml-auto p-1"><a class="nav-link text-light"
+                href="/user/kullanıcı_arayuzu/">Hoşgeldin: {{request.user.username}}</a></p>
+        {% endif %}
     </nav>
 </div>
 
@@ -58,7 +75,7 @@
 <div id="slidenavdivi" style="margin-top: 58px;">
     <button id="b1" class="btn btn-success"><img style="width: 40px" src="{% static 'trafficgift.gif' %}"></button>
     <ul class="vertical-menu" id="slidenav">
-        <li><a href="#" id="home" > <i class="fa fa-admin"></i>Hakkımızda..</a></li>
+        <li><a href="#" id="home"> <i class="fa fa-admin"></i>Hakkımızda..</a></li>
         <li><a href="%C4%B0ndirilenler.html">İndir</a></li>
         <li><a href="Guvenlik.html">Güvenlik</a></li>
         <li><a href="iletisim.html">İletişim</a></li>

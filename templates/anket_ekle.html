@@ -1,1 +1,30 @@
-anket ekle sayfasına hoşgeldin bro
+{% extends "common/layout.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'anketekle.css'%} ">
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>ANKET DOLDURMA SAYFASINA HOŞGELDİN</h1>
+    <p>Bu sayfada sürücüler olarakaNKET EKLEME YAPTIGIMIZ YERDİR İYİ ANKETLER DİLERİQ</p>
+    <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
+  </div>
+<form method="POST">
+    {% csrf_token %}
+    <div class="row">
+    {% for field in form %}
+    <div class="col-md-12">
+      <h4 style="font-weight: bold;">
+      {{ field.label }}
+    </h4>
+    </div>
+    <div class="col-md-12">
+
+      {{ field }}
+    </div>
+      <br><br>
+    {% endfor %}
+  </div>
+<button type="submit"> ekle qnq</button>
+</form>
+</div>
+{% endblock %}
