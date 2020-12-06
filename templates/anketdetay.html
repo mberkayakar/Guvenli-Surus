@@ -1,0 +1,59 @@
+{% extends "common/layout.html" %}
+
+{% block content %}
+
+{% if messages %}
+{% for message in messages %}
+
+<div
+  style="z-index: 9999;position:fixed;top:50px;width:90%; text-align: center;margin-top: 20px; margin-left:5%;margin-right:5%;"
+  class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+  {{message}}
+</div>
+{% endfor %}
+{% endif %}
+
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Anket detay sayfası</h1>
+    <p>Burada Anketlerinizi daha detaylı görebilirsiniz</p>
+    <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
+    <h1></h1>
+  </div>
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">oluşturma Tarihi</th>
+        <th scope="col">yazar</th>
+        <th scope="col">enlem</th>
+        <th scope="col">boylam</th>
+        <th scope="col">sorun</th>
+        <th scope="col">kim tarafından kaynaklı</th>
+        <th scope="col">hangi gurub</th>
+        <th scope="col">Çözüm yolu </th>
+      </tr>
+    </thead>
+    <tbody>
+   {% for Anket in newAnket %}
+       <tr>
+        <th scope="row"><a href="/anket/detay/{{Anket.id}}"> {{Anket.tarih}}</a></th>
+        <td><a href="/anket/detay/{{Anket.id}}">{{Anket.author}}</a></td>  
+        <td>{{Anket.enlem}}</td>
+        <td>{{Anket.boylam}}</td>
+        <td>{{Anket.sorun}}</td>
+        <td>{{Anket.ana_unsur}}</td>
+        <td>{{Anket.benzerlik}}</td>
+        <td>{{Anket.alinabilecek_onlem}}</td>
+        <td><a href="/anket/guncelle/{{Anket.id}}" class="btn btn-success"> Güncelle</a></td>
+        <td><a href="/anket/sil/{{Anket.id}}" class="btn btn-danger"> Sil</a></td>
+      </tr>
+       {% endfor %}     
+  </table>
+  {{newAnket }}
+
+  <p>{{newAnket.alinabilecek_onlem}}</p>
+
+{% endblock %}

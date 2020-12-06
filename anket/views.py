@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_list_or_404
 from django.contrib.auth.models import User
-from anket.models import Anket
+from .models import Anket
 from .forms import AnketForm
 from django.contrib import messages
 
@@ -29,4 +29,10 @@ def anketyonetimi(request):
     return render (request,"anketyonetimi.html")
 
 def anketislem(request):
-    return render (request,"anketislem.html")
+    newAnket=Anket.objects.filter(author=request.user)
+    return render (request,"anketislem.html",{"newAnket":newAnket})
+
+def anketdetay(request,id):
+    newAnket=Anket.objects.filter(id=id).first()
+    newAnket=get_list_or_404(Anket,id=id)
+    return render (request,"anketdetay.html",{"newAnket":newAnket})

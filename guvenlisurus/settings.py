@@ -14,6 +14,8 @@ from pathlib import Path
 import os
 import django_heroku
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -42,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'anket',
     'user',
+    'iletisim',
+  
     
 ]
 
@@ -128,5 +132,16 @@ STATIC_URL = '/static/'
 
 STATICFILES_DIRS=[ os.path.join(BASE_DIR,'static')]
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = '10forzabalkes196610@gmail.com'
+EMAIL_HOST_PASSWORD = 'rohycatxmpicxdzq' #past the key or password app here
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'default from email'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

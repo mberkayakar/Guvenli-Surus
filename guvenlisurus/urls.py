@@ -17,7 +17,13 @@ from django.contrib import admin
 from django.urls import path,include
 from anket.views import navigasyon
 from guvenlisurus.views import index,hakkında
-    
+from iletisim.views import iletisim
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+ 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',index,name="index"),
@@ -25,5 +31,10 @@ urlpatterns = [
     path('hakkında/',hakkında),
     path('user/',include("user.urls")),
     path ('anket/',include("anket.urls")),
+    path ('iletisim/',include("iletisim.urls")),
    
 ]   
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+    
