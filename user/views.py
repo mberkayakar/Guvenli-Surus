@@ -38,6 +38,7 @@ def kayıtol(request):
             email=form.cleaned_data.get("email")
             first_name=form.cleaned_data.get("first_name")
             last_name=form.cleaned_data.get("last_name")
+            
             newUser= User(username=username,password=password,email=email,first_name=first_name,last_name=last_name)
             newUser.save()
             login(request,newUser)
@@ -83,3 +84,5 @@ def cıkıs(request):
     logout(request)
     messages.success(request,"Çıkış yapıldı")
     return redirect("/user/giris")
+
+ 

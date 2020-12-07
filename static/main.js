@@ -1,3 +1,5 @@
+// Haritanın türkiye başlangıç konumu enlem ve boylamdan veriri
+
 var myLatLng = {
     lat: 39.0578771,
     lng: 34.4999527
@@ -42,7 +44,7 @@ function calcRoute() {
 
             //Get distance and time            
 
-            $("#output").html("<div class='result-table'> Sürüş Mesafesi: " + result.routes[0].legs[0].distance.text + ".<br />Duration: " + result.routes[0].legs[0].duration.text + ".</div>");
+            $("#output").html("<div class='result-table'> Sürüş Mesafesi: " + result.routes[0].legs[0].distance.text + ".<br />Süre: " + result.routes[0].legs[0].duration.text + ".</div>");
             document.getElementById("output").style.display = "block";
             //display route
             directionsDisplay.setDirections(result);
