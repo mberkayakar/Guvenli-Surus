@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5ba6aca3-2d68-40f4-9c46-dd1ac188a687" name="Default Changelist" comment="" />
+    <list default="true" id="5ba6aca3-2d68-40f4-9c46-dd1ac188a687" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/guvenlisurus/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/guvenlisurus/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guvenlisurus/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/guvenlisurus/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_app/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_app/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_app/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_app/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_app/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_app/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/social_app/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/navbar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/a.htm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aa.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aaa.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/aaaa.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/anketislem.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/anketislem.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/common/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/common/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/giris.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/giris.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/hakkında.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/hakkında.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/iletisim.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/iletisim.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/user/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/user/urls.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

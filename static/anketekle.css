@@ -4,12 +4,15 @@
     margin-right: 10%;
     
 }
+ 
 form{
+
     text-align: center;
     font-size: large;
     font-family: Arial, Helvetica, sans-serif;
 }
 form input[type=text], select {
+  
     width: 80%;
     padding: 12px 20px;
     margin: 8px 0;

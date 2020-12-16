@@ -13,7 +13,7 @@
 </div>
 {% endfor %}
 {% endif %}
-
+<br>
 <div class="container">
   <div class="jumbotron text-center">
     <h1>Anket detay sayfası</h1>
@@ -21,39 +21,133 @@
     <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
     <h1></h1>
   </div>
+
+ 
+ 
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    .container {
+      max-width: 960px;
+    }
+
+    .lh-condensed { line-height: 1.25; }
+
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+
+    }
+  </style>
+
+
+ 
+ 
+ 
+  <div class="container">
+<div class="py-5 text-center">
+ 
+  <h2>Detay Sayfası </h2>
+  <p class="lead"> Hoşgeldin {{request.user.username}} {{newAnket.tarih}} tarihinde oluşturmuş olduğun anketin detaylarını burdan gözlemleyebilirsin</p>
 </div>
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">oluşturma Tarihi</th>
-        <th scope="col">yazar</th>
-        <th scope="col">enlem</th>
-        <th scope="col">boylam</th>
-        <th scope="col">sorun</th>
-        <th scope="col">kim tarafından kaynaklı</th>
-        <th scope="col">hangi gurub</th>
-        <th scope="col">Çözüm yolu </th>
-      </tr>
-    </thead>
-    <tbody>
-   {% for Anket in newAnket %}
-       <tr>
-        <th scope="row"><a href="/anket/detay/{{Anket.id}}"> {{Anket.tarih}}</a></th>
-        <td><a href="/anket/detay/{{Anket.id}}">{{Anket.author}}</a></td>  
-        <td>{{Anket.enlem}}</td>
-        <td>{{Anket.boylam}}</td>
-        <td>{{Anket.sorun}}</td>
-        <td>{{Anket.ana_unsur}}</td>
-        <td>{{Anket.benzerlik}}</td>
-        <td>{{Anket.alinabilecek_onlem}}</td>
-        <td><a href="/anket/guncelle/{{Anket.id}}" class="btn btn-success"> Güncelle</a></td>
-        <td><a href="/anket/sil/{{Anket.id}}" class="btn btn-danger"> Sil</a></td>
-      </tr>
-       {% endfor %}     
-  </table>
-  {{newAnket }}
+<div class="row ">
+  
+  <div class="col-md-12 ">
+    <h4 class="mb-3">{{request.user.username}}</h4>
+    <form class="needs-validation" novalidate>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="firstName">Kullanıcı adı</label>
+          <input type="text" class="form-control" id="firstName" placeholder="" value="{{request.user.username}}" required readonly>
+        
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Oluşturulma Tarihi</label>
+          <input type="text" class="form-control" id="lastName" placeholder="" value="{{newAnket.tarih}}" required readonly>
+         
+        </div>
+      </div>
 
-  <p>{{newAnket.alinabilecek_onlem}}</p>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="Enlem bilgisi">Enlem bilgisi</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">N°/S°</span>
+            </div>
+            <input type="text" class="form-control" id="enlem" placeholder="enlem" value="{{newAnket.enlem}}"  readonly>
+          </div>
+        
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="lastName">Boylam bilgisi</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">λ</span>
+            </div>
+            <input type="text" class="form-control" id="enlem" placeholder="enlem" value="{{newAnket.enlem}}"  readonly>
+          </div>
+        </div>
+      </div>
+      
+ 
 
+      
+       
+
+          <!-- ikinci satır yani üstteki ikili satırdan sonraki satır --> 
+
+      <div class="mb-3">
+        <label for="sorun">Sorun <span class="text-muted">(Optional)</span></label>
+        <input type="sorun" class="form-control" id="sorun" value="{{newAnket.sorun}}"  readonly>
+ 
+      </div>
+
+      <div class="mb-3">
+        <label for="address">Sorun kim veya kimler tarafından kaynaklı ?</label>
+        <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{newAnket.ana_unsur}}" readonly>
+        <div class="invalid-feedback">
+          Please enter your shipping address.
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="address2">Hangi guruba dahil ?  </label>
+        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{newAnket.benzerlik}}" readonly>
+      </div>
+
+      <div class="mb-3">
+        <label >Çözüm yolu için önerileriniz <span class="text-muted">(Optional)</span></label>
+        <textarea class="form-control" id="exampleFormControlTextarea4" rows="9"  placeholder="{{newAnket.alinabilecek_onlem}}" readonly></textarea>
+      </div>
+
+  
+ 
+ <br><br>
+  
+      
+    </form>
+  </div>
+</div>
+
+ 
+</div>
+
+    
+    
+
+ 
+   
+ 
+</div>
 {% endblock %}

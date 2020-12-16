@@ -14,6 +14,7 @@ urlpatterns = [
     path('logout/',cıkıs),
     path('sil/',sil),
     path('kisisel/',kisisel),
+
 #   path('account/', include('django.contrib.auth.urls')),
 #   path('password-reset/', auth_views.PasswordResetView.as_view( template_name='commons/password-reset/password_reset.html', subject_template_name='commons/password-reset/password_reset_subject.txt', email_template_name='commons/password-reset/password_reset_email.html', ), name='password_reset'),
 #   path('password-reset/done/', auth_views.PasswordResetDoneView.as_view( template_name='commons/password-reset/password_reset_done.html' ), name='password_reset_done'),

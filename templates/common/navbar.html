@@ -1,73 +1,111 @@
 {% load static %}
 
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>body{
+    
+    
+        background-color: #93BFA3;
+
+}</style>
 <link rel="stylesheet" href="{% static 'navbar.css'%} ">
-
-
-
-
-<div id="medialar" class="container-fluid" style="width:100%; padding-left:0; padding-right:0;">
-    <!-- Nav Barımız üst ikon menümüz-->
-
-    <nav class="navbar navbar-expand-md bg-success navbar-light" id="ustnav">
-
-        <div class="container navbar">
-
-            <a href="/" class="navbar-brand " style="color: white"><img src="{% static 'trafficgift.gif' %}"
-                    style="width: 50px" class="px-2">
-                Güvenli Sürüş</a>
-
-            <button style="right: 0px !important " class="navbar-toggler" data-toggle="collapse"
-                data-target="#NavCol"><span style="float: right" class="navbar-toggler-icon "></span></button>
-
-
-            <div class="collapse navbar-collapse" id="NavCol">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ml-auto p-1 bg-success"><a class="nav-link text-light"
-                            href="/hakkında">Hakkımızda</a></li>
-                    <li class="nav-item ml-auto p-1"><a class="nav-link text-light" href="/navigasyon">Navigasyon</a>
-                    </li>
-                    <li class="nav-item ml-auto p-1"><a class="nav-link text-light" href="/iletisim/iletisim">İletişim</a>
-                    </li>
  
 
-                    {% if request.user.is_authenticated %}
+<nav class="navbar navbar-expand-lg navbar-light bg-success " id="buyuknav">
+    <a class="navbar-brand" href="/"> <img src="{% static 'trafficgift.gif' %}"
+        style="width: 50px" class="px-2">  Güvenli Sürüş</a> 
 
-                    <li class="nav-item ml-auto p-1" style="color: red;"><a class="nav-link text-light"
-                            href="/user/logout">Çıkış yap</a></li>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#acılannavbar" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>  <!-- Hamburger menüdeki Navbar Açma kapama ikonu-->
+    </button>
 
-                    {% else %}
+  
+    <div class="collapse navbar-collapse" id="acılannavbar">
+      <ul class="navbar-nav mr-auto">
 
-                    <li class="nav-item ml-auto p-1"><a class="nav-link text-light" href="/user/giris">Giriş Yap</a>
-                    </li>
-                    {% endif %}
+        <li class="nav-item active">  
+            <a class="nav-link" href="/hakkında">Hakkımızda <span class="sr-only">(current)</span></a>          
+        </li>
 
-                    
-                    <li class="nav-item ml-auto p-1" style="color: red;"><a class="nav-link text-light"
-                        href="/user/sifresifirla">şifremi unuttum</a></li>
+        <li class="nav-item active">  
 
-                </ul>
-              
-            </div>
-        </div>
-        {% if request.user.is_authenticated %}
-        <p class="nav-item ml-auto p-1"><a class="nav-link text-light"
-                href="/user/kullanıcı_arayuzu/">Hoşgeldin: {{request.user.username}}</a></p>
+          <a class="nav-link" href="/navigasyon">Navigasyon <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">  
+            <a class="nav-link" href="/iletisim/iletisim">İletisim <span class="sr-only">(current)</span></a>          
+        </li>
+
+<!-- Giriş Çıkış döngülerimiz için yazılan if blogu-->
+{% if request.user.is_authenticated %}
+        <li class="nav-item active">  
+            <a class="nav-link" href="/user/logout">Çıkış Yap <span class="sr-only">(current)</span></a>          
+        </li>
+        {% else %}
+
+        <li class="nav-item active">  
+            <a class="nav-link" href="/user/giris">Giriş Yap <span class="sr-only">(current)</span></a>          
+        </li>
         {% endif %}
-    </nav>
-</div>
+        
+        {% if request.user.is_authenticated %}
+        <li class="nav-item active">  
+            <a class="nav-link" href="/user/giris"> <span class="sr-only">(current)</span></a>          
+        </li>
+
+    
+
+
+        <!-- Hamburger Dropdown menü kısmı-->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Hoşgeldin : {{request.user.username}}
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/user/kullanıcı_arayuzu/">Kullanıcı paneli</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/../anket/anketekle/">Anket Doldur</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/user/kisisel/">Bilgilerim</a>
+          </div>
+        </li>
+        {% endif %}
+       
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+ 
+      </form>
+    </div>
+  </nav>
+
+ 
+ 
+
+     
+  
+ 
+
+
+        
+ 
+
+                  
+
+     
+
+               
+           
+
+
+ 
+
+
 
 <!-- Nav Barımız üst ikon menümüz-->
 
@@ -75,14 +113,12 @@
 <div id="slidenavdivi" style="margin-top: 58px;">
     <button id="b1" class="btn btn-success"><img style="width: 40px" src="{% static 'trafficgift.gif' %}"></button>
     <ul class="vertical-menu" id="slidenav">
-        <li><a href="#" id="home"> <i class="fa fa-admin"></i>Hakkımızda..</a></li>
+        <li><a href="#" id="home" > <i class="fa fa-admin "></i>Hakkımızda..</a></li>
         <li><a href="%C4%B0ndirilenler.html">İndir</a></li>
         <li><a href="Guvenlik.html">Güvenlik</a></li>
         <li><a href="iletisim.html">İletişim</a></li>
         <li><a href="whatsappWeb.html" id="son">WhatsappWeb</a></li>
     </ul>
-
-
 </div>
 
 <script>
@@ -126,4 +162,23 @@
         if (i == 1) i = 0;
         else i = 1;
     }, 2000);
+</script>
+
+
+<script>
+    function myFunction(x) {
+      if (x.matches) { // If media query matches
+        $("#buyuknav").hide()
+        $("#slidenavdivi").show()
+}
+
+       else {
+        $("#buyuknav").show()
+        $("#slidenavdivi").hide()
+      }
+    }
+    
+    var x = window.matchMedia("(max-width: 700px)")
+    myFunction(x) 
+    x.addListener(myFunction) 
 </script>

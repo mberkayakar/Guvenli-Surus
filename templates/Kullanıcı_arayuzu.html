@@ -2,18 +2,39 @@
 {% extends "common/layout.html" %}
 {% load static %}
 {% block content %}
+<style>
+  .card{margin-top:50px;}
+  #map {
+  height: 100%;
+}
+.card{
+  background-color: transparent;
+  border: none;
+}
+/* Optional: Makes the sample page fill the window. */
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+</style>
 <div class="container">
-  {{user.id}}
-  <button ><a href="/user/logout"> Çıkış yapmak için </a></button>
+  <div class="py-5 text-center">
+ 
+    <h2>Kullanıcı Paneli </h2>
+    <p class="lead"> Hoşgeldin {{request.user.first_name}}</p>
+  </div>
+ 
   <div class="row">
     <div class="col-md-6">
  <!-- ilk satır                 -->
         <div class="card border-bottom pb-3 text-center">
           <h2 class="card-title text-center" >Anket Yönetimi </h2>
-           <img class="card-img-top" src="{% static 'anket.png' '%}" alt="Anket Fotosu">
+           <img class="card-img-top" src="{% static 'anket.png' '%}"   alt="Anket Fotosu">
            <div class="card-body">
-              <p class="card-text text-center">anket oluşturma, görüntüleme, güncelleme ve ekleme sayfaları .</p>
-              <a href="/anket/anketyonetimi" class="btn btn-sm btn-success ">İşlemler  </a>
+              <p class="card-text text-center">Anket oluşturma, görüntüleme, güncelleme ve ekleme işlemleri için</p>
+              <a href="/anket/anketyonetimi" class="btn btn-sm btn-success  btn-lg btn-block">İşlemler  </a>
            </div>
         </div>
    
@@ -21,10 +42,10 @@
   <div class=" col-md-6 ">
     <div class="card border-bottom pb-3 text-center">
       <h2 class="card-title text-center" >Kişisel Bilgiler </h2>
-       <img class="card-img-top" src="{% static 'kisisel.png' '%}" alt="Anket Fotosu">
+       <img class="card-img-top" src="{% static 'kisisel.png' '%}" height="405px" alt="Anket Fotosu">
        <div class="card-body">
           <p class="card-text text-center">Bilgilerinizi güncelleyebileceğiniz, görüntüleyebileceğiniz ve üyeliğinizi sonlandırabileceğiniz sayfalar için.</p>
-          <a href="/user/kisisel/" class="btn btn-sm btn-success ">İşlemler  </a>
+          <a href="/user/kisisel/" class="btn btn-sm btn-success btn-lg btn-block ">İşlemler  </a>
        </div>
     </div>
 
@@ -36,10 +57,12 @@
   <div class=" col-md-12">
     <div class="card border-bottom pb-3 text-center">
       <h2 class="card-title text-center" >Navigasyon</h2>
-       <img class="card-img-top" src="//placeimg.com/280/180/tech" alt="Anket Fotosu">
+      <div  id="map" style=" height: 450px;"></div>
+     
        <div class="card-body">
+        
           <p class="card-text text-center">Güvenli bir yolculuğa başlamak isterseniz doğru adrestesiniz</p>
-          <a href="#" class="btn btn-sm btn-success  ">İşlemler  </a>
+          <a href="#" class="btn btn-sm btn-success btn-lg btn-block  ">İşlemler  </a>
          
        </div>
     </div>
@@ -50,4 +73,21 @@
 </div>
 
 
+ 
+<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjDCtgyoBK9Qj8Cb6G9AlnhkDJPQw-dGw&callback=initMap&libraries=&v=weekly"
+  defer
+></script>
+<script>
+ 
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 39.0578771,lng: 34.4999527 },
+ 
+    zoom: 6.2,
+  });
+}
+</script>
 {% endblock %}
+

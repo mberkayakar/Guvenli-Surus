@@ -2,13 +2,17 @@ from django.shortcuts import render,redirect
 from .forms import RegisterForm,LoginForm 
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate,logout
+from django.contrib.auth.hashers import make_password
 from django.contrib import messages
 from anket.models import Anket
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@login_required(login_url="/user/giris")
 def kisisel(request):
     return render (request,"kisisel.html")
 
+@login_required(login_url="/user/giris")
 def sil(request):
     try:
         Anket.objects.filter(author_id=request.user.id).update(author_id="0")
@@ -34,19 +38,19 @@ def kayıtol(request):
         form=RegisterForm(request.POST )
         if form.is_valid():
             username=form.cleaned_data.get("username")
-            password=form.cleaned_data.get("password")
+            password = make_password(form.cleaned_data.get("password"))
             email=form.cleaned_data.get("email")
             first_name=form.cleaned_data.get("first_name")
             last_name=form.cleaned_data.get("last_name")
             
             newUser= User(username=username,password=password,email=email,first_name=first_name,last_name=last_name)
             newUser.save()
-            login(request,newUser)
+            login(request,newUser, backend='User')
             messages.success(request,messages.INFO,"Kayıt Başarılı ")
             return render(request,"Kullanıcı_arayuzu.html")
             
         context={"form":form}
-        return render (request,"Kullanıcı_arayuzu.html",context)
+        return redirect (request,"Kullanıcı_arayuzu.html",context)
        
     else:
         form=RegisterForm()
@@ -54,7 +58,7 @@ def kayıtol(request):
         return render (request,"kayıtol.html",context)
 
  
-
+@login_required(login_url="/user/giris")
 def kullanıcı_arayuzu(request):
     return render (request,"Kullanıcı_arayuzu.html")
 
@@ -79,7 +83,7 @@ def girisyap(request):
         context={"form":form}
         return render (request,"giris.html",context)
 
-    
+@login_required(login_url="/user/giris")
 def cıkıs(request):
     logout(request)
     messages.success(request,"Çıkış yapıldı")

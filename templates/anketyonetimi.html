@@ -1,6 +1,13 @@
 {% extends "common/layout.html" %}
 {% load static %}
 {% block content %}
+<style>
+.card{
+  background-color: transparent;
+  border: none;
+}
+
+</style>
 <div class="container">
   <div class="jumbotron text-center">
     <h1>Anket Yönetimi</h1>
@@ -10,7 +17,7 @@
   <br>
   <hr>
 
-  <div class="row">
+  <div class="row" >
     <div class="col-md-6">
  <!-- ilk satır                 -->
         <div class="card border-bottom pb-3 text-center">
@@ -18,7 +25,7 @@
            <img class="card-img-top" src="{% static 'anket.png' '%}" alt="Anket Fotosu">
            <div class="card-body">
               <p class="card-text text-center">anket oluşturma, görüntüleme, güncelleme ve ekleme sayfaları .</p>
-              <a href="/anket/anketekle" class="btn btn-sm btn-success ">İşlemler  </a>
+              <a href="/anket/anketekle" class="btn  btn-success btn-lg btn-block ">İşlemler  </a>
            </div>
         </div>
    
@@ -26,10 +33,10 @@
   <div class=" col-md-6 ">
     <div class="card border-bottom pb-3 text-center">
       <h2 class="card-title text-center" >Anket Görüntüle </h2>
-       <img class="card-img-top" src="{% static 'anket.png' '%}" alt="Anket Fotosu">
+       <img class="card-img-top" src="{% static 'buyutec.png' '%}" height="407px" alt="Anket Fotosu">
        <div class="card-body">
           <p class="card-text text-center">Anket Bilgierinizi güncelleyebileceğiniz, görüntüleyebileceğiniz ve silebileceğiniz sayfalar için.</p>
-          <a href="/anket/anketislem" class="btn btn-sm btn-success ">İşlemler  </a>
+          <a href="/anket/anketislem" class="btn  btn-success btn-lg btn-block ">İşlemler  </a>
        </div>
     </div>
 

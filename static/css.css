@@ -1,4 +1,8 @@
 
+    body{
+        background-color: #93BFA3;
+    }
+
 /* Clearfix */
 .row{
     position: relative;

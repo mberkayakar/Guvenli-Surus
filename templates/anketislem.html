@@ -22,32 +22,35 @@
     <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
   </div>
 {% if newAnket %}
- <table class="table">
+ <table class="table" style="width: 100%;">
   <thead>
     <tr>
       <th scope="col">oluşturma Tarihi</th>
-      <th scope="col">yazar</th>
-      <th scope="col">enlem</th>
-      <th scope="col">boylam</th>
+ 
+      
+      
       <th scope="col">sorun</th>
       <th scope="col">kim tarafından kaynaklı</th>
       <th scope="col">hangi gurub</th>
-      <th scope="col">Çözüm yolu </th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+ 
     </tr>
   </thead>
   <tbody>
      {% for Anket in newAnket %}
      <tr>
       <th scope="row"><a href="/anket/detay/{{Anket.id}}"> {{Anket.tarih}}</a></th>
-      <td><a href="/anket/detay/{{Anket.id}}">{{Anket.author}}</a></td>  
-      <td>{{Anket.enlem}}</td>
-      <td>{{Anket.boylam}}</td>
+ 
+      
+      
       <td>{{Anket.sorun}}</td>
       <td>{{Anket.ana_unsur}}</td>
       <td>{{Anket.benzerlik}}</td>
-      <td>{{Anket.alinabilecek_onlem}}</td>
+ 
       <td><a href="/anket/guncelle/{{Anket.id}}" class="btn btn-success"> Güncelle</a></td>
       <td><a href="/anket/sil/{{Anket.id}}" class="btn btn-danger"> Sil</a></td>
+ 
     </tr>
      {% endfor %}     
 </table>

@@ -36,6 +36,7 @@ function calcRoute() {
         destination: document.getElementById("location-2").value,
         travelMode: google.maps.TravelMode.DRIVING,
         unitSystem: google.maps.UnitSystem.METRIC
+        
     }
 
     // Routing

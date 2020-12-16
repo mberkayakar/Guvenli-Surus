@@ -12,9 +12,9 @@ class Anket(models.Model):    #anket tablom
     sorun  = models.CharField(max_length=50)
 
     #kazamı yoksa kaza riskimi var
-    ana_unsur = models.CharField(max_length=50 ,verbose_name="Sorun Kim Tarafından Kaynaklı") # belediye / kullanıcılar / doğal problemler vs
-    benzerlik = models.CharField(max_length=50, verbose_name="Hangi Guruba Dahil") # belediyenin alt yapılandırması mesela trafik işaretçilerimi yoksa asvaltmı vs
-    alinabilecek_onlem = models.TextField( verbose_name="Sorun ve Çözüm İçin Tavsiyeler")
+    ana_unsur = models.CharField(max_length=50 ,verbose_name="Sorun Kim Tarafından Kaynaklı",blank=False) # belediye / kullanıcılar / doğal problemler vs
+    benzerlik = models.CharField(max_length=50, verbose_name="Hangi Guruba Dahil",blank=False ) # belediyenin alt yapılandırması mesela trafik işaretçilerimi yoksa asvaltmı vs
+    alinabilecek_onlem = models.TextField( verbose_name="Sorun ve Çözüm İçin Tavsiyeler" ,blank=True )
     tarih = models.DateTimeField(default=now, editable=False)  
  
  

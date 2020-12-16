@@ -5,8 +5,7 @@
 <div class="container">
   <div class="jumbotron text-center">
     <h1>ANKET DOLDURMA SAYFASINA HOŞGELDİN</h1>
-    <p>Bu sayfada sürücüler olarak anket ekleme yaptığımız yerdir.</p>
-  
+    <p>Bu sayfada sürücüler olarakaNKET EKLEME YAPTIGIMIZ YERDİR İYİ ANKETLER DİLERİQ</p>
     <strong>...Güvenli Sürüş ailesi olarak keyifli sürüşler dileriz...</strong>
   </div>
 <form method="POST">
@@ -14,26 +13,26 @@
     <div class="row">
     {% for field in form %}
     {% if field.label == "Hangi Guruba Dahil" %}
-    <div>
-    <label>Hangi Guruba Dahil</label>
-    <select  name="benzerlik" id="Faktor2" >
+        <div class="col-md-12">
+            <label>Hangi Guruba Dahil</label><br>
+            <select  name="benzerlik" id="Faktor2" > </select>
+        </div>
 
-        </select>
-      </div>
+       
+
+
   {% endif %}
  {% if field.label == "Sorun Kim Tarafından Kaynaklı" %} 
- <div>
-        <label>Sorun Kim Tarafından Kaynaklı </label>
-     <select name="ana_unsur" id="Faktor1" >
-
-        </select>
-      </div>
+        <div class=" col-md-12">
+            <label>Sorun Kim Tarafından Kaynaklı </label><br>
+            <select name="ana_unsur" id="Faktor1" > </select>
+        </div>
     {% endif %}
     {% if field.label != "Sorun Kim Tarafından Kaynaklı" and field.label != "Hangi Guruba Dahil" %} 
-    <div class="col-md-12">
+        <div class="col-md-12">
       <h4 style="font-weight: bold;">
-      {{ field.label }}
-    </h4>
+      {{ field.label }}<br><br>
+        </h4>
     </div>
 
     <div class="col-md-12">
@@ -42,15 +41,17 @@
     </div>
       <br><br>
      
+
     {% endif %}
     
     {% endfor %}
   </div>
-  <br>
-<button class="btn  btn-success btn-lg btn-block" type="submit"> Kaydet</button>
-<br>
+  <button class="btn btn-success btn-lg btn-block" type="submit"> Güncelle</button>
+ 
 </form>
 </div>
+
+
 
 <script>
 
@@ -86,12 +87,12 @@
 
   $( document ).ready(function() {
       $('#Faktor1').append($('<option>', {
-//          value: "undifend",
-//          text:  "--- Gelen kapsam Seçiniz ---"
+//         value: "undifend",
+         
       }));
       $('#Faktor2').append($('<option>', {
-//      value: "undifend",
-//      text:  "--- Sorun çeşidini seçiniz ---"
+//          value: "undifend",
+          
       }));
   $.each(data,function (index,value) {
       $('#Faktor1').append($('<option>', {
@@ -107,7 +108,7 @@
       $.each(data,function (index,value) {
 
           if (Faktor==value.name) {
-              $('#Faktor2').find('option').remove().end().append('<option selected> --- Sorun çeşidini seçiniz --- </option>').val('');
+              $('#Faktor2').find('option').remove().end().append('<option selected> --- Faktor2 Seçiniz --- </option>').val('');
               $.each(value.Faktor,function (index,val) {
 
                   $('#Faktor2').append($('<option>', {
@@ -122,6 +123,24 @@
   });
 
 
+
+
+  // kendi denemem ha bu ona göre 
+  
+var x=document.getElementById("demo");
+function getLocation()
+  {
+  if (navigator.geolocation)
+    {
+    navigator.geolocation.getCurrentPosition(showPosition);
+    }
+  else{x.innerHTML="Tarayıcınız bu özelliği desteklemiyor.";}
+  }
+function showPosition(position)
+  {
+  x.innerHTML="Enlem: " + position.coords.latitude + 
+  "<br>Boylam: " + position.coords.longitude;	
+  }
 
   </script>
 
