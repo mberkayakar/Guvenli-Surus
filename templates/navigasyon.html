@@ -10,75 +10,75 @@
 
 <!-- bundan yukarısı silinecek galiba -->
 <div class="container main">
-    <h1 style="text-align: center;">Gidmek istediğiniz yerden nereye gideceginizi</h1>
+    <br><br>
+    <h1 style="text-align: center;">Yolculuk Nereye</h1><br>
     <form>
-        <!-- Location 1 -->
+
         <div class="row text-center">
-            <div class="col-12 col-md-6 text-center">
-                <div class="location-label">
-                    <label>Başlangıç: </label>
-                </div>
-                <input type="text" id="location-1" name="origin" placeholder="Enter a start location...">
-
-
-                <button type="button" onclick="getLoc()">Anlık Konum</button>
-            </div>
 
             <!-- Location 2 -->
 
-            <div class="col-12 col-md-6 text-center">
+            <div class="col-3 ">
+                <button class="button btn1" type="button" onclick="clearRoute();">Sil</button>
+            </div>
+            <div class="col-6  text-center">
+                <input type="text" id="location-1" style="display:none" name="origin"
+                    placeholder="Enter a start location...">
                 <div class="location-label">
                     <label>Varış: </label>
                 </div>
                 <div class="location-input">
-                    <input type="text" id="location-2" name="destination" placeholder="Enter a last location...">
+                    <div class="input-group  mb-3">
+                        <input type="text" id="location-2" class="form-control" name="destination"
+                            placeholder="Enter a last location...">
+                    </div>
                 </div>
+            </div>
+            <div class="col-3"><button class="button btn2" type="button" onclick="calcRoute();">Başlat</button>
             </div>
         </div>
 
 
-        <!-- Submit button -->
-        <div class="row">
-            <button class="button btn1" type="button" onclick="clearRoute();">Clear</button>
-            <button class="button btn2" type="button" style="display:inline-block; right:10px"
-                onclick="calcRoute();">Submit</button>
-        </div>
-
         <!-- Stats table -->
-        <div id="output" class="result-table"></div>
     </form>
+    <div id="output" class="result-table text-center"></div>
 
     <div class="container-map" id="google-map"></div>
 
-    <table class="table table-bordered table-dark">
+
+    <table class="table" style="width: 100%;">
         <thead>
             <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
+                <th scope="col">oluşturma Tarihi</th>
+
+
+
+                <th scope="col">sorun</th>
+                <th scope="col">kim tarafından kaynaklı</th>
+                <th scope="col">hangi gurub</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+
             </tr>
         </thead>
         <tbody>
+            {% for Anket in newAnket %}
             <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <th scope="row"><a href="/anket/detay/{{Anket.id}}"> {{Anket.tarih}}</a></th>
+
+
+
+                <td>{{Anket.sorun}}</td>
+                <td>{{Anket.ana_unsur}}</td>
+                <td>{{Anket.benzerlik}}</td>
+                <td><button class="btn btn-warning" onclick="kazaGoster('{{Anket.enlem}}', '{{Anket.boylam}}')"> Kazayı Göster</button></td>
+
+
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-            </tr>
-        </tbody>
+            {% endfor %}
     </table>
+
+
 
 </div>
 

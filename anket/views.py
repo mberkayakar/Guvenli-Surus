@@ -13,7 +13,14 @@ def navigasyon(request):
     kazalar = []
     for res in result:
         kazalar.append('|'+str(res.enlem)+'|'+' '+'|'+str(res.boylam)+'|')
-    return render(request,"navigasyon.html", {"kazalar": kazalar})
+    newAnket=Anket.objects.all()
+    return render(request,"navigasyon.html", {"kazalar": kazalar,"newAnket":newAnket})
+
+
+
+    
+  
+
 
 
 
@@ -26,7 +33,7 @@ def anketekle(request):
         Anket=form.save(commit=False)
         Anket.author=request.user
         Anket.save()
-  #      messagess.success(request,"Anket Kaydedildi")
+        messages.success(request,"Anket Kaydedildi")
         return redirect("/anket/anketyonetimi/")
 
     return render (request,"anket_ekle.html",{"form":form})
@@ -54,6 +61,7 @@ def anketdetay(request,id):
 def anketsil(request,id):
     anket=get_object_or_404(Anket,id=id)
     anket.delete()
+    messages.success(request,"Seçtiğiniz anket başarı ile silinmiştir")
     return redirect ("/anket/anketislem/")
 
 
@@ -66,15 +74,14 @@ def anketguncelle(request,id):
     
  
     anket=get_object_or_404(Anket,id=id)
-#    anket=anket[0]
     form = AnketForm(request.POST or None , request.FILES or None , instance=anket)
     if form.is_valid():
-        print("form is valide e girildi kanks")
+   
         anket= form.save(commit=False)
         anket.author=request.user
         anket.save()
-        print("anket.save e gelindi")
-        return redirect("/")
+        messages.success(request,"Değişikliğiniz sisteme kaydedilmiştir")
+        return redirect("/anket/anketislem/")
    
     return render (request,"anketguncelle.html",{"form":form})
  

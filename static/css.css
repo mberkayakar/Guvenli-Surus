@@ -8,14 +8,6 @@
     position: relative;
 }
 
-.btn1{
-    margin-left: 20px;
-}
-
-.btn2{
-    position: absolute;
-    right: 20px;
-}
 
 
 .container .main{
@@ -76,9 +68,6 @@
     border: none;
     border-radius: 1rem;
     cursor: pointer;
-    float: right;
-    margin-bottom: 1rem;
-    margin-right: .5rem;
     transition: ease-in-out .1s;
 }
 
@@ -93,7 +82,7 @@
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    height: 10rem;    
+    height: 7rem;    
 
     /* Animation */
     animation-name: moveIn;

@@ -36,7 +36,7 @@ function calcRoute() {
         destination: document.getElementById("location-2").value,
         travelMode: google.maps.TravelMode.DRIVING,
         unitSystem: google.maps.UnitSystem.METRIC
-        
+
     }
 
     // Routing
@@ -45,7 +45,7 @@ function calcRoute() {
 
             //Get distance and time            
 
-            $("#output").html("<div class='result-table'> Sürüş Mesafesi: " + result.routes[0].legs[0].distance.text + ".<br />Süre: " + result.routes[0].legs[0].duration.text + ".</div>");
+            $("#output").html("<div class='result-table'>  Sürüş Mesafesi: " + result.routes[0].legs[0].distance.text + ".<br />Süre: " + result.routes[0].legs[0].duration.text + ".</div>");
             document.getElementById("output").style.display = "block";
             //display route
             directionsDisplay.setDirections(result);
@@ -104,7 +104,6 @@ function getLoc() {
 
 function showPos(position) {
     currentLoc = position.coords.latitude + ', ' + position.coords.longitude;
-    document.getElementById("location-1").style.display = "inline";
     document.getElementById("location-1").value = position.coords.latitude + ', ' + position.coords.longitude;
 }
 
@@ -123,7 +122,18 @@ function showKazalar() {
     });
 }
 
+function kazaGoster(enlem, boylam) {
+    console.log(parseInt(enlem), parseInt(boylam));
+    var kaza = map.setCenter({
+        'lat': parseInt(enlem),
+        'lng': parseInt(boylam)
+    });
+    window.scrollTo(0, 0);
+}
+
 $(document).ready(function () {
     showKazalar();
-
+    const konumAl = setInterval(function() {
+        getLoc();
+      }, 5000);
 });

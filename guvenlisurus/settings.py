@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'anket',
     'user',
-    'iletisim',
+#    'iletisim',
     'django.contrib.sites',   # <--
     
     'allauth',   # <--
@@ -191,7 +191,7 @@ STATICFILES_DIRS=[ os.path.join(BASE_DIR,'static')]
 EMAİl_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = '10forzabalkes196610@gmail.com'
-EMAIL_HOST_PASSWORD = 'rohycatxmpicxdzq' #past the key or password app here
+EMAIL_HOST_PASSWORD = 'rohycatxmpicxdzq'  
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = '10Forzabalkes1966@gmail.com'

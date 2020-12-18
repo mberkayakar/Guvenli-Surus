@@ -7,7 +7,7 @@
 
 <div
   style="z-index: 9999;position:fixed;top:50px;width:90%; text-align: center;margin-top: 20px; margin-left:5%;margin-right:5%;"
-  class="alert alert-danger alert-dismissible" role="alert">
+  class="alert alert-danger alert-dismissible" role="alert" id="alarmdivi">
   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
   {{message}}
 </div>
@@ -61,4 +61,20 @@
 
 </div>
 <br>
+<script>
+  $(document).ready(function(){
+
+setTimeout(function(){
+
+    $("#alarmdivi").fadeOut("slow", function () {
+
+    $("#alarmdivi").remove();
+
+});
+
+}, 2000);
+
+});
+
+</script>
 {% endblock %}
