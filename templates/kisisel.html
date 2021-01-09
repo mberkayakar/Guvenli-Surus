@@ -82,7 +82,7 @@
 
       <div class="row">
         <div class="col-md-6 mb-3">
-          <label for="Enlem bilgisi">İsim</label>
+          <label >İsim</label>
           <div class="input-group">
         
             <input type="text" class="form-control"  placeholder="enlem" value="{{request.user.first_name}}"  readonly>
@@ -93,7 +93,7 @@
           <label for="lastName">Soyisim</label>
           <div class="input-group">
             
-            <input type="text" class="form-control" id="enlem" placeholder="enlem" value="{{request.user.last_name}}"  readonly>
+            <input type="text" class="form-control"  value="{{request.user.last_name}}"  readonly>
           </div>
         </div>
       </div>
@@ -107,11 +107,17 @@
 
       <div class="mb-3">
         <label for="sorun">E_posta adresiniz </label>
-        <input type="sorun" class="form-control" id="sorun" value="{{request.user.email}}"  readonly>
+        <input  class="form-control"  value="{{request.user.email}}"  readonly>
  
       </div>
  
   
+      <div class="mb-3">
+        <label for="sorun">Sisteme son giriş tarihi </label>
+        <input  class="form-control"  value="{{request.user.last_login}}"  readonly>
+ 
+      </div>
+ 
  
  <br><br>
   

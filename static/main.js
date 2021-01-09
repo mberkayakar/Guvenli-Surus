@@ -3,94 +3,85 @@
 var anlikKonum = null;
 var kazaKonumlar = [];
 
-var myLatLng = {
+var LatLng = {
     lat: 39.0578771,
     lng: 34.4999527
 };
+
 var mapOptions = {
-    center: myLatLng,
+    center: LatLng,
     zoom: 6.2,
     streetViewControl: false,
     mapTypeControl: false,
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
-var baslangic =new google.maps.Marker({
+var baslangicMarker = new google.maps.Marker({
     position: null,
     map: map
-     
-}); 
-var bitis =new google.maps.Marker({
+
+});
+var bitisMarker = new google.maps.Marker({
     position: null,
     map: map
- 
-});  
+});
 
 
 var icons = {
     start: new google.maps.MarkerImage(
-        // URL
         'http://maps.google.com/mapfiles/ms/micons/blue.png',
-        // (width,height)
+
         new google.maps.Size(44, 32),
-        // The origin point (x,y)
+
         new google.maps.Point(0, 0),
-        // The anchor point (x,y)
+
         new google.maps.Point(22, 32)),
+
     end: new google.maps.MarkerImage(
-        // URL
         'http://maps.google.com/mapfiles/ms/micons/green.png',
-        // (width,height)
         new google.maps.Size(44, 32),
-        // The origin point (x,y)
+
         new google.maps.Point(0, 0),
-        // The anchor point (x,y)
+
         new google.maps.Point(22, 32))
 };
 
 
-var currentLoc = {
+var anlikLatLng = {
     'lat': '',
     'lng': ''
 };
 
-// Hide result box
 document.getElementById("output").style.display = "none";
 
-// Create/Init map
+
 var map = new google.maps.Map(document.getElementById('google-map'), mapOptions);
 const trafficLayer = new google.maps.TrafficLayer();
 
 
-// Create a DirectionsService object to use the route method and get a result for our request
+
 var directionsService = new google.maps.DirectionsService();
 
-// Create a DirectionsRenderer object which we will use to display the route
 var directionsDisplay = new google.maps.DirectionsRenderer({
     map: map,
     suppressMarkers: true
 });
 
-// Bind the DirectionsRenderer to the map
 directionsDisplay.setMap(map);
 
-
-
-// Define calcRoute function
-function calcRoute() {
-    baslangic.setMap(null);
-    bitis.setMap(null);
-    if (odaklama==true)
-    kameraodakla()
-    //create request
+function yolhesapla() {
+    baslangicMarker.setMap(null);
+    bitisMarker.setMap(null);
+    if (odaklama == true)
+        kameraodakla()
     var request = {
-        origin: document.getElementById("location-1").value,
-        destination: document.getElementById("location-2").value,
+        origin: document.getElementById("lokasyon-1").value,
+        destination: document.getElementById("lokasyon-2").value,
         travelMode: google.maps.TravelMode.DRIVING,
         unitSystem: google.maps.UnitSystem.METRIC
     }
 
-    function makeMarker(position, icon, title, map) {
+    function markerKoy(position, icon, title, map) {
         return new google.maps.Marker({
             position: position,
             map: map,
@@ -98,68 +89,58 @@ function calcRoute() {
             title: title
         });
     }
-    // Routing
     directionsService.route(request, function (result, status) {
         if (status == google.maps.DirectionsStatus.OK) {
 
-            //Get distance and time            
             var leg = result.routes[0].legs[0];
-            baslangic = makeMarker(leg.start_location, icons.start, "start", map);
-            bitis = makeMarker(leg.end_location, icons.end, "end", map);
+            baslangicMarker = markerKoy(leg.start_location, icons.start, "start", map);
+            bitisMarker = markerKoy(leg.end_location, icons.end, "end", map);
 
             $("#output").html("<div class='result-table'>  Sürüş Mesafesi: " + result.routes[0].legs[0].distance.text + ".<br />Süre: " + result.routes[0].legs[0].duration.text + ".</div>");
             document.getElementById("output").style.display = "block";
-            //display route
             directionsDisplay.setDirections(result);
         } else {
-            //delete route from map
             directionsDisplay.setDirections({
                 routes: []
             });
-            //center map in London
-            map.setCenter(myLatLng);
+            map.setCenter(LatLng);
 
-            //Show error message           
 
             alert("Rota oluşturulamadı lütfen daha sonra tekrar deneyin");
             clearRoute();
         }
     });
-
 }
 
-// Clear results
 
-function clearRoute() {
-    
+function rotayıtemizle() {
+
     document.getElementById("output").style.display = "none";
-    document.getElementById("location-1").value = "";
-    document.getElementById("location-2").value = "";
+    document.getElementById("lokasyon-1").value = "";
+    document.getElementById("lokasyon-2").value = "";
 
     directionsDisplay.setDirections({
         routes: []
     });
-    baslangic.setMap(null);
-    bitis.setMap(null);
-
+    baslangicMarker.setMap(null);
+    bitisMarker.setMap(null);
 }
 
-// Create autocomplete objects for all inputs
 
 var options = {
     types: ['(cities)']
 }
 
 
-var input1 = document.getElementById("location-1");
+var input1 = document.getElementById("lokasyon-1");
 var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
 
-var input2 = document.getElementById("location-2");
+var input2 = document.getElementById("lokasyon-2");
 var autocomplete2 = new google.maps.places.Autocomplete(input2, options);
 
 
 //var x = document.getElementById("demo");
-function getLoc() {
+function anlikKonumAl() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPos);
     } else {
@@ -184,10 +165,10 @@ function showPos(position) {
         map: map,
         icon: anlikKonumIcon
     })
-    currentLoc['lat'] = position.coords.latitude;
-    currentLoc['lng'] = position.coords.longitude;
+    anlikLatLng['lat'] = position.coords.latitude;
+    anlikLatLng['lng'] = position.coords.longitude;
 
-    document.getElementById("location-1").value = position.coords.latitude + ', ' + position.coords.longitude;
+    document.getElementById("lokasyon-1").value = position.coords.latitude + ', ' + position.coords.longitude;
 }
 
 function deneme(lat, lng) {
@@ -202,10 +183,10 @@ function deneme(lat, lng) {
         map: map,
         icon: anlikKonumIcon
     })
-    currentLoc['lat'] = lat;
-    currentLoc['lng'] = lng;
+    anlikLatLng['lat'] = lat;
+    anlikLatLng['lng'] = lng;
 
-    document.getElementById("location-1").value = lat + ', ' + lng;
+    document.getElementById("lokasyon-1").value = lat + ', ' + lng;
 }
 
 function showKazalar() {
@@ -264,7 +245,7 @@ $(".toggle").click(function () {
 });
 
 
-function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+function kilometreHesapla(lat1, lon1, lat2, lon2) {
     var R = 6371; // Radius of the earth in km
     var dLat = deg2rad(lat2 - lat1); // deg2rad below
     var dLon = deg2rad(lon2 - lon1);
@@ -288,7 +269,7 @@ function yakinlikHesapla() {
     $("#kazalar").empty()
     kazaKonumlar.forEach(kaza => {
 
-        var mesafe = getDistanceFromLatLonInKm(currentLoc['lat'], currentLoc['lng'], kaza['lat'], kaza['lng']);
+        var mesafe = kilometreHesapla(anlikLatLng['lat'], anlikLatLng['lng'], kaza['lat'], kaza['lng']);
 
         siraliKazalar.push({
             'mesafe': mesafe.toFixed(2),
@@ -303,21 +284,6 @@ function yakinlikHesapla() {
     });
     siraliKazalar.sort((a, b) => (a.mesafe > b.mesafe) ? 1 : -1);
 
-    /*
-    console.log('\n\nSırasız');
-    console.log(siraliKazalar);
-    
-
-    console.log('\n\nSıralı');
-    console.log(siraliKazalar);
-    */
-   var audio = new Audio('https://media.geeksforgeeks.org/wp-content/uploads/20190531135120/beep.mp3');
-   function play() { 
- 
-    audio.play(); 
-} 
-
- 
 
     var yakindakiKazalarSayi = 0;
     var mesafeStringi;
@@ -347,6 +313,7 @@ function yakinlikHesapla() {
     $('#kazaSayisiSpan').text(yakindakiKazalarSayi)
     siraliKazalar.length = 0
 }
+
 var kitlimi = false;
 
 function haritakilitle() {
@@ -367,31 +334,33 @@ function haritakilitle() {
         kitlimi = true;
     }
 }
-var myVar ;
+
+var myVar;
 var odaklama = false;
+
 function kameraodakla() {
-   
-    
+
+
     if (odaklama === false) {
         map.setOptions({
             draggable: false,
-            zoom:17
+            zoom: 17
 
         });
 
-        map.panTo(currentLoc)
+        map.panTo(anlikLatLng)
         document.getElementById("kamerakilitle").classList.remove("fa-camera");
         document.getElementById("kamerakilitle").classList.add("fa-map-marker");
         odaklama = true;
-        myVar = setInterval(function(){
-            map.panTo(currentLoc)
+        myVar = setInterval(function () {
+            map.panTo(anlikLatLng)
             map.setZoom(17)
         }, 2000);
     } else {
         map.setOptions({
             draggable: true
         });
-        
+
         clearInterval(myVar);
         document.getElementById("kamerakilitle").classList.remove("fa-map-marker");
         document.getElementById("kamerakilitle").classList.add("fa-camera");
@@ -417,6 +386,7 @@ function trafikgoster() {
 }
 
 var debug = false;
+
 $(document).ready(function () {
     kazalar.forEach(kaza => {
         kaza = kaza.split('|');
@@ -432,13 +402,13 @@ $(document).ready(function () {
     });
 
     showKazalar();
-    getLoc();
+    anlikKonumAl();
 
     setInterval(function () {
         if (!debug)
-            getLoc();
+            anlikKonumAl();
         yakinlikHesapla();
-        
+        showKazalar();
     }, 2000);
 
 
