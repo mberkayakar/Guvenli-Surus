@@ -3,10 +3,31 @@
 
 
 {% block content %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+
 <link rel="stylesheet" href="{% static 'css.css'%} ">
 <script>
     var kazalar = "{{kazalar|escapejs}}".split(',');
 </script>
+
+
+<div class="kaza-container ">
+    <div class="kaza-header">
+        <button class="toggle kaza-btn toggleButton">Yakındaki Kazalar <span id="kazaSayisiSpan"
+                class="badge  badge-warning">0</span></button>
+
+    </div>
+    <div class="kaza-window">
+        <ul id="kazalar" style="list-style: none; padding-left: 0;">
+
+        </ul>
+    </div>
+</div>
+
 
 <!-- bundan yukarısı silinecek galiba -->
 <div class="container main">
@@ -42,10 +63,21 @@
         <!-- Stats table -->
     </form>
     <div id="output" class="result-table text-center"></div>
-
-    <div class="container-map" id="google-map"></div>
-
-
+    <div style="position: relative;">
+        <div class="container-map" id="google-map"></div>
+        <button style="position: absolute; z-index: 99; width: 50px; height: 50px; bottom: 30px; left: 10px;"
+            class="btn btn-lg btn-block btn-light  " onclick="haritakilitle()"><i id="haritaKilitleBtn"
+                onMouseOver="this.style.color='black'" style="color: gray;" onMouseOut="this.style.color='gray'" class="fa fa-unlock"></i>
+        </button>
+        <button style="position: absolute; z-index: 99; width: 50px; height: 50px; bottom: 85px; left: 10px;"
+            class="btn btn-lg btn-block btn-light  "  onclick="trafikgoster()"><i id="trafikGosterBtn"
+                onMouseOver="this.style.color='black'" style="color: gray;" onMouseOut="this.style.color='gray'" class="fa fa-road"></i>
+        </button>
+        <button style="position: absolute; z-index: 99; width: 50px; height: 50px; bottom: 140px; left: 10px;"
+            class="btn btn-lg btn-block btn-light   "  onclick="kameraodakla()"><i id="kamerakilitle"
+                onMouseOver="this.style.color='black'"style="color: gray;" onMouseOut="this.style.color='gray'" class="fa fa-camera"></i>
+        </button>
+    </div>
     <table class="table" style="width: 100%;">
         <thead>
             <tr>
@@ -71,17 +103,16 @@
                 <td>{{Anket.sorun}}</td>
                 <td>{{Anket.ana_unsur}}</td>
                 <td>{{Anket.benzerlik}}</td>
-                <td><button class="btn btn-warning" onclick="kazaGoster('{{Anket.enlem}}', '{{Anket.boylam}}')"> Kazayı Göster</button></td>
+                <td><button class="btn btn-warning"
+                        onclick="kazaGoster('{{Anket.enlem|escapejs}}', '{{Anket.boylam|escapejs}}')"> Kazayı
+                        Göster</button></td>
 
 
             </tr>
             {% endfor %}
     </table>
 
-
-
 </div>
-
 
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAjDCtgyoBK9Qj8Cb6G9AlnhkDJPQw-dGw&libraries=places"

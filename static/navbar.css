@@ -42,9 +42,10 @@
 
 #slidenav {
   position: fixed;
-  right: 0px;
+  right: 10px;
   z-index: 1;
   display: none;
+  top: 60px;
 }
 
 #b1 {

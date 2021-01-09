@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path,include
 from anket.views import navigasyon
 from guvenlisurus.views import index,hakkında,hata
+from user.views import girisyap
  
 from user.views import girisyap 
  
@@ -37,6 +38,7 @@ urlpatterns = [
     path ('anket/',include("anket.urls")),
  
     path('accounts/social/signup/', hata), 
+    path('accounts/login/', girisyap), 
     path('accounts/', include('allauth.urls')), 
 
  

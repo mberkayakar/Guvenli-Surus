@@ -12,15 +12,9 @@ def navigasyon(request):
     result = Anket.objects.all()
     kazalar = []
     for res in result:
-        kazalar.append('|'+str(res.enlem)+'|'+' '+'|'+str(res.boylam)+'|')
+        kazalar.append('|'+str(res.id)+'|'+' '+'|'+str(res.enlem) +'|'+' '+'|'+str(res.boylam)+'|'+'|'+str(res.sorun)+'|'+'|'+str(res.ana_unsur)+'|')
     newAnket=Anket.objects.all()
     return render(request,"navigasyon.html", {"kazalar": kazalar,"newAnket":newAnket})
-
-
-
-    
-  
-
 
 
 
@@ -71,8 +65,6 @@ def anketsil(request,id):
 
  
 def anketguncelle(request,id):
-    
- 
     anket=get_object_or_404(Anket,id=id)
     form = AnketForm(request.POST or None , request.FILES or None , instance=anket)
     if form.is_valid():

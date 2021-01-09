@@ -18,12 +18,12 @@ def sil(request):
         Anket.objects.filter(author_id=request.user.id).update(author_id="0")
         u = User.objects.get(username = request.user.username)
         u.delete()
-        messages.success(request, "The user is deleted")   
+        messages.success(request, "Kullanıcı Silinmiştir")   
         logout(request)
         return redirect('/')
 
     except User.DoesNotExist:
-        messages.error(request, "User doesnot exist")    
+        messages.error(request, "Kullanıcı Mevcut değildir")    
         return redirect('/user/logout/')
 
     except Exception as e: 
@@ -31,7 +31,6 @@ def sil(request):
         return redirect('/')
 
     return render(request, 'index.html') 
-
 
 def kayıtol(request):
     if request.method=="POST":

@@ -188,15 +188,18 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS=[ os.path.join(BASE_DIR,'static')]
 
 
-EMAİl_BACKEND='django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = '10forzabalkes196610@gmail.com'
-EMAIL_HOST_PASSWORD = 'rohycatxmpicxdzq'  
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = '10Forzabalkes1966@gmail.com'
+ACCOUNT_EMAIL_VERIFICATION = "none"
+# EMAİl_BACKEND='django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = '10forzabalkes196610@gmail.com'
+# EMAIL_HOST_PASSWORD = 'rohycatxmpicxdzq'  
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# DEFAULT_FROM_EMAIL = '10Forzabalkes1966@gmail.com'
+
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+ 
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
