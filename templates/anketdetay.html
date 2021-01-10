@@ -4,7 +4,7 @@
 
 {% if messages %}
  
-
+ 
 <div
   style="z-index: 9999;position:fixed;top:50px;width:90%; text-align: center;margin-top: 20px; margin-left:5%;margin-right:5%;"
   class="alert alert-danger alert-dismissible" role="alert" id="alarmdivi">
@@ -36,7 +36,10 @@
       -ms-user-select: none;
       user-select: none;
     }
-
+  #id_alinabilecek_onlem{
+    width: 100% !important;
+  
+  }
     .container {
       max-width: 960px;
     }
@@ -50,6 +53,10 @@
       }
 
     }
+
+    textarea{
+      resize: none;
+    }
   
   </style>
 
@@ -61,7 +68,7 @@
 <div class="py-5 text-center">
  
   <h2>Detay Sayfası </h2>
-  <p class="lead"> Hoşgeldin {{request.user.username}} {{newAnket.tarih}} tarihinde oluşturmuş olan anketin detaylarını burdan gözlemleyebilirsin</p>
+
 </div>
 
 <div class="row ">
@@ -112,14 +119,14 @@
           <!-- ikinci satır yani üstteki ikili satırdan sonraki satır --> 
 
       <div class="mb-3">
-        <label for="sorun">Sorun <span class="text-muted">(Optional)</span></label>
-        <input type="sorun" class="form-control" id="sorun" value="{{newAnket.sorun}}"  readonly>
+        <label for="sorun">Sorun <span class="text-muted">(Opsiyonel)</span></label>
+        <input type="sorun" class="form-control"   value="{{newAnket.sorun}}"  readonly>
  
       </div>
 
       <div class="mb-3">
         <label for="address">Sorun kim veya kimler tarafından kaynaklı ?</label>
-        <input type="text" class="form-control" id="address" placeholder="1234 Main St" value="{{newAnket.ana_unsur}}" readonly>
+        <input type="text" class="form-control"    value="{{newAnket.ana_unsur}}" readonly>
         <div class="invalid-feedback">
           Please enter your shipping address.
         </div>
@@ -127,12 +134,12 @@
 
       <div class="mb-3">
         <label for="address2">Hangi guruba dahil ?  </label>
-        <input type="text" class="form-control" id="address2" placeholder="Apartment or suite" value="{{newAnket.benzerlik}}" readonly>
+        <input type="text" class="form-control"    value="{{newAnket.benzerlik}}" readonly>
       </div>
 
       <div class="mb-3">
-        <label >Çözüm yolu için önerileriniz <span class="text-muted">(Optional)</span></label>
-        <textarea class="form-control" id="exampleFormControlTextarea4" rows="9"  placeholder="{{newAnket.alinabilecek_onlem}}" readonly></textarea>
+        <label >Çözüm yolu için önerileriniz <span class="text-muted">(Opsiyonel)</span></label>
+        <textarea class="form-control" id="exampleFormControlTextarea4" rows="9"  readonly>{{newAnket.alinabilecek_onlem}}</textarea>
       </div>
 
   
