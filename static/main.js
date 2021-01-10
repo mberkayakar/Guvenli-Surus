@@ -27,8 +27,8 @@ var bitisMarker = new google.maps.Marker({
 });
 
 
-var icons = {
-    start: new google.maps.MarkerImage(
+var ikonlar = {
+    baslangicikon: new google.maps.MarkerImage(
         'http://maps.google.com/mapfiles/ms/micons/blue.png',
 
         new google.maps.Size(44, 32),
@@ -37,7 +37,7 @@ var icons = {
 
         new google.maps.Point(22, 32)),
 
-    end: new google.maps.MarkerImage(
+    bitisikon: new google.maps.MarkerImage(
         'http://maps.google.com/mapfiles/ms/micons/green.png',
         new google.maps.Size(44, 32),
 
@@ -93,8 +93,8 @@ function yolhesapla() {
         if (status == google.maps.DirectionsStatus.OK) {
 
             var leg = result.routes[0].legs[0];
-            baslangicMarker = markerKoy(leg.start_location, icons.start, "start", map);
-            bitisMarker = markerKoy(leg.end_location, icons.end, "end", map);
+            baslangicMarker = markerKoy(leg.start_location, ikonlar.baslangicikon, "start", map);
+            bitisMarker = markerKoy(leg.end_location, ikonlar.bitisikon, "end", map);
 
             $("#output").html("<div class='result-table'>  Sürüş Mesafesi: " + result.routes[0].legs[0].distance.text + ".<br />Süre: " + result.routes[0].legs[0].duration.text + ".</div>");
             document.getElementById("output").style.display = "block";
@@ -171,36 +171,11 @@ function showPos(position) {
     document.getElementById("lokasyon-1").value = position.coords.latitude + ', ' + position.coords.longitude;
 }
 
-function deneme(lat, lng) {
-    debug = true;
-    if (anlikKonum != null)
-        anlikKonum.setMap(null);
-    anlikKonum = new google.maps.Marker({
-        position: {
-            'lat': lat,
-            'lng': lng
-        },
-        map: map,
-        icon: anlikKonumIcon
-    })
-    anlikLatLng['lat'] = lat;
-    anlikLatLng['lng'] = lng;
-
-    document.getElementById("lokasyon-1").value = lat + ', ' + lng;
-}
+ 
 
 function showKazalar() {
     var kazaPoint = []
-    var baslangicIcon = {
-        url: "https://i.hizliresim.com/xH3SCp.png",
-        scaledSize: new google.maps.Size(20, 25), // scaled size
-
-    };
-    var bitisIcon = {
-        url: "https://i.hizliresim.com/2QWAVj.png",
-        scaledSize: new google.maps.Size(20, 25), // scaled size
-
-    };
+   
     var kazaIcon = {
         url: "https://i.hizliresim.com/C9hTed.png",
         scaledSize: new google.maps.Size(25, 20), // scaled size
@@ -385,8 +360,6 @@ function trafikgoster() {
     }
 }
 
-var debug = false;
-
 $(document).ready(function () {
     kazalar.forEach(kaza => {
         kaza = kaza.split('|');
@@ -405,8 +378,7 @@ $(document).ready(function () {
     anlikKonumAl();
 
     setInterval(function () {
-        if (!debug)
-            anlikKonumAl();
+        anlikKonumAl();
         yakinlikHesapla();
         showKazalar();
     }, 2000);
