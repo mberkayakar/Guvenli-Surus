@@ -1,5 +1,4 @@
 from django.shortcuts import render,redirect
-from .forms import RegisterForm,LoginForm 
 from django.contrib.auth.models import User
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.hashers import make_password
@@ -40,9 +39,8 @@ def kullanıcı_arayuzu(request):
 
 def girisyap(request):
     
-        form=LoginForm()
-        context={"form":form}
-        return render (request,"giris.html",context)
+         
+        return render (request,"giris.html",{})
 
 @login_required(login_url="/user/giris")
 def cıkıs(request):

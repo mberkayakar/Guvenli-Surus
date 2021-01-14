@@ -14,10 +14,7 @@ urlpatterns = [
     path('logout/',cıkıs),
     path('sil/',sil),
     path('kisisel/',kisisel),
-
  
-
-
  
 
 
